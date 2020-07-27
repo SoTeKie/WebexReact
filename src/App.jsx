@@ -1,8 +1,9 @@
 import React from 'react';
+import ProfileForm from './components/ProfileForm';
 
 function App(){
     return(
-        <h1>Functional app</h1>
+        <ProfileForm />
     );
 }
 
