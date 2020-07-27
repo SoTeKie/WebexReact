@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Switch, Route} from 'react-router';
+import {Router, Switch, Route} from 'react-router-dom';
 import history from './helpers/history';
 import ProfileForm from './components/ProfileForm';
 import ListAll from './components/ListAll';
@@ -15,7 +15,7 @@ function App(){
                 <Route exact path='/view-all'>
                     <ListAll />
                 </Route>
-                <Route path='view/:id' children={DetailedView}/>
+                <Route path='/view/:id' children={<DetailedView />}/>
             </Switch>
         </Router>
     );

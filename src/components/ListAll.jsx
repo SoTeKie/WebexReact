@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 import history from '../helpers/history';
 import axios from 'axios';
 
@@ -26,12 +27,12 @@ function ListAll(){
 
 function Podnet(props){
     return(
-        <div onClick={() => history.push(`/view/${props.podnet.id}`)}>
+        <Link to={`/view/${props.podnet.id}`}>
             <h1>{props.podnet.firstName} {props.podnet.lastName}</h1>
             <h2>{props.podnet.adress}</h2>
             <img src={props.podnet.image} alt='User-uploaded' />
             <hr />
-        </div>
+        </Link>
     );
 }
 
