@@ -10,7 +10,7 @@ function ProfileForm(){
     const [image, setImage] = useState();
 
     function handleSubmit(){
-        console.log('submitted!')
+        console.log('submitted!');
     }
 
     return(
