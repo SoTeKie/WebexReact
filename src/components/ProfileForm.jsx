@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import history from '../helpers/history'
 
 function ProfileForm(){
 
@@ -11,6 +12,7 @@ function ProfileForm(){
     const [image, setImage] = useState();
 
     const handleSubmit = e => {
+        e.preventDefault();
         const formData = new FormData();
         formData.append('firstName', firstName);
         formData.append('lastName', lastName);
@@ -25,8 +27,11 @@ function ProfileForm(){
               'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
             }
           })
-              .then(res => console.log(res.data))
-              .catch(err => console.log(err))
+              .then(response => {
+                  console.log(response.data);
+                  history.push('/view-all');
+                })
+              .catch(error => console.log(error));
     }
 
     function handleImageChange(e){
