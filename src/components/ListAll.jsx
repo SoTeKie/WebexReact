@@ -1,6 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import cntStyle from '../Stylesheets/Center.module.css';
+import style from '../Stylesheets/List.module.css';
 
 function ListAll(){
 
@@ -15,13 +17,17 @@ function ListAll(){
 
     if (podnety == null){
         return(
-            <h1>Loading...</h1>
+            <div className={cntStyle.centered}>
+                <h1>Loading...</h1>
+            </div>
         );
     };
     
     if (podnety.length === 0){
         return(
-            <h1>Nie su nacitane ziadne podnety</h1>
+            <div className={cntStyle.centered}>
+                <h1>Nie su nacitane ziadne podnety</h1>
+            </div>
         )
     }
 
@@ -32,10 +38,12 @@ function ListAll(){
 
 function Podnet(props){
     return(
-        <Link to={`/view/${props.podnet.id}/`}>
-            <h1>{props.podnet.firstName} {props.podnet.lastName}</h1>
-            <h2>{props.podnet.adress}</h2>
-            <img src={props.podnet.image} alt='User-uploaded' />
+        <Link style={{textDecoration: "none"}} to={`/view/${props.podnet.id}/`}>
+            <div className={style.container}>        
+                <h1 className={style.text}>{props.podnet.firstName + ' ' + props.podnet.lastName}</h1>
+                <h2 className={style.text}>{props.podnet.adress}</h2>
+                <img className={style.image} src={props.podnet.image} alt='User-uploaded' />
+            </div>
             <hr />
         </Link>
     );

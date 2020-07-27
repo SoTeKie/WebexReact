@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory} from 'react-router-dom';
 import axios from 'axios';
+import style from '../Stylesheets/Detail.module.css'
 
 function DetailedView(){
     const [podnet, setPodnet] = useState();
@@ -25,12 +26,12 @@ function DetailedView(){
     }
 
     return (
-       <div>
+       <div className={style.container}>
             <h1>{podnet.firstName} {podnet.lastName}</h1>
             <h3>{podnet.uploadDate}</h3>
             <h2>{podnet.adress}</h2>
             <p>{podnet.description}</p>
-            <img src={podnet.image} alt='user-uploaded'/>
+            <img className={style.image} src={podnet.image} alt='user-uploaded'/>
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import style from '../Stylesheets/Form.module.css';
 
 function ProfileForm(){
 
@@ -43,35 +44,38 @@ function ProfileForm(){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className={style.container} onSubmit={handleSubmit}>
             {/* Names */}
-            <label>
+            <label className={style.label}>
                 Meno:
                 <input type='text' value={firstName} onChange={ e => setFirstName(e.target.value)}/>
             </label>
-            <label>
+            <label className={style.label}>
                 Priezvisko:
                 <input type='text' value={lastName} onChange={ e => setLastName(e.target.value)}/>
             </label>
 
             {/* Adress */}
-            <label>
-                Adresa:
+            <label className={style.label}>
+                Adresa:  
                 <input type='text' value={adress} onChange={ e => setAdress(e.target.value)}/>
             </label>
 
             {/* Description - "PODNET" */}
-            <textarea placeholder='Popis podnetu' value={description} onChange={ e => setDescription(e.target.value)}></textarea>
+            <label className={style.label}>
+                Popis podnetu:
+                <textarea className={style.textarea} value={description} onChange={ e => setDescription(e.target.value)}></textarea>
+            </label>
 
             {/* Image upload - NOT IMPLEMENTED */}
-            <input 
+            <input className={style.input} 
                 type='file'
                 id='upload-button'
                 onChange={handleImageChange}
             />
 
             {/* Submit button */}
-            <button>Ulozit</button>
+            <button className={style.button}>Ulozit</button>
         </form>
     );
 }

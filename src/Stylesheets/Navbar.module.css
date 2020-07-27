@@ -1,0 +1,25 @@
+.container {
+    position: sticky;
+    background-color: #348ceb;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+}
+
+.link {
+    line-height: 70px;
+    font-size: 30px;
+    color: white;
+    background-color: #348ceb;
+    border: none;
+    text-align: center;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    flex: 1;
+    outline: none;
+    margin-left: 10px;
+
+}
