@@ -1,16 +1,38 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function ProfileForm(){
 
     // User inputs
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [adress, setAdress] = useState();
-    const [description, setDescription] = useState();
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [adress, setAdress] = useState('');
+    const [description, setDescription] = useState('');
     const [image, setImage] = useState();
 
-    function handleSubmit(){
-        console.log('submitted!');
+    const handleSubmit = e => {
+        const formData = new FormData();
+        formData.append('firstName', firstName);
+        formData.append('lastName', lastName);
+        formData.append('adress', adress);
+        formData.append('description', description);
+        formData.append("image", image, image.name);
+
+        const url = 'http://localhost:8000/podnety/';
+
+        axios.post(url, formData, {
+            headers: {
+              'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+            }
+          })
+              .then(res => console.log(res.data))
+              .catch(err => console.log(err))
+    }
+
+    function handleImageChange(e){
+        if (e.target.files.length) {
+            setImage(e.target.files[0]);
+        } 
     }
 
     return(
@@ -32,10 +54,17 @@ function ProfileForm(){
             </label>
 
             {/* Description - "PODNET" */}
-            <textarea placeholder="Popis podnetu" value={description} onChange={ e => setDescription(e.target.value)}></textarea>
+            <textarea placeholder='Popis podnetu' value={description} onChange={ e => setDescription(e.target.value)}></textarea>
 
             {/* Image upload - NOT IMPLEMENTED */}
-            <button>Nahrat obrazok</button>
+            <input 
+                type='file'
+                id='upload-button'
+                onChange={handleImageChange}
+            />
+
+            {/* Submit button */}
+            <button>Ulozit</button>
         </form>
     );
 }
