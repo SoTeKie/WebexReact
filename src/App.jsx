@@ -3,6 +3,7 @@ import {Router, Switch, Route} from 'react-router';
 import history from './helpers/history';
 import ProfileForm from './components/ProfileForm';
 import ListAll from './components/ListAll';
+import DetailedView from './components/DetailedView';
 
 function App(){
     return(
@@ -14,7 +15,7 @@ function App(){
                 <Route exact path='/view-all'>
                     <ListAll />
                 </Route>
-                {/*<Route path='view/:id' children={}/>*/}
+                <Route path='view/:id' children={DetailedView}/>
             </Switch>
         </Router>
     );
