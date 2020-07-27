@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import history from '../helpers/history'
+import { useHistory } from 'react-router-dom';
 
 function ProfileForm(){
 
@@ -10,6 +10,8 @@ function ProfileForm(){
     const [adress, setAdress] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState();
+
+    let history = useHistory();
 
     const handleSubmit = e => {
         e.preventDefault();

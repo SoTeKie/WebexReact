@@ -3,17 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import axios from 'axios';
-import history from './helpers/history';
-
-axios.interceptors.response.use(response => {
-  return response;
-}, error => {
-  if (error.response.status === 404){
-    history.push('/404');
-  }
-  return Promise.reject(error);
-});
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,13 +1,15 @@
 import React from 'react';
-import {Router, Switch, Route} from 'react-router-dom';
-import history from './helpers/history';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import ProfileForm from './components/ProfileForm';
 import ListAll from './components/ListAll';
 import DetailedView from './components/DetailedView';
+import NotFound from './components/NotFound'
+import Navbar from './components/Navbar';
 
 function App(){
     return(
-        <Router history={history}>
+        <Router>
+            <Navbar />
             <Switch>
                 <Route exact path='/add-new'>
                     <ProfileForm />
@@ -15,7 +17,10 @@ function App(){
                 <Route exact path='/view-all'>
                     <ListAll />
                 </Route>
-                <Route path='/view/:id' children={<DetailedView />}/>
+                <Route exact path='/view/:id' children={<DetailedView />}/>
+                <Route path='*'>
+                    <NotFound />
+                </Route>
             </Switch>
         </Router>
     );

@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import history from '../helpers/history';
 import axios from 'axios';
 
 function ListAll(){
@@ -19,6 +18,12 @@ function ListAll(){
             <h1>Loading...</h1>
         );
     };
+    
+    if (podnety.length === 0){
+        return(
+            <h1>Nie su nacitane ziadne podnety</h1>
+        )
+    }
 
     return(
        podnety.map( podnet => <Podnet key={podnet.id} podnet={podnet}/>)
@@ -27,7 +32,7 @@ function ListAll(){
 
 function Podnet(props){
     return(
-        <Link to={`/view/${props.podnet.id}`}>
+        <Link to={`/view/${props.podnet.id}/`}>
             <h1>{props.podnet.firstName} {props.podnet.lastName}</h1>
             <h2>{props.podnet.adress}</h2>
             <img src={props.podnet.image} alt='User-uploaded' />
